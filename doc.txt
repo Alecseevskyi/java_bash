@@ -1,1 +1,51 @@
+#include <iostream>
+#include <vector>
+#include <limits>
 
+using namespace std;
+
+// Функция для нахождения максимума в массиве
+double find_max(const vector<double>& numbers) {
+    if (numbers.empty()) {
+        return numeric_limits<double>::quiet_NaN(); // Возвращаем NaN для пустого массива
+    }
+    
+    double max_num = numbers[0];
+    for (double num : numbers) {
+        if (num > max_num) {
+            max_num = num;
+        }
+    }
+    return max_num;
+}
+
+int main() {
+    int n;
+    cout << "Введите количество элементов в массиве: ";
+    cin >> n;
+    
+    if (n <= 0) {
+        cout << "Количество элементов должно быть положительным числом!" << endl;
+        return 1;
+    }
+    
+    vector<double> numbers(n);
+    
+    // Ввод элементов массива
+    for (int i = 0; i < n; ++i) {
+        cout << "Введите элемент " << i + 1 << ": ";
+        cin >> numbers[i];
+    }
+    
+    // Использование функции find_max
+    double maximum = find_max(numbers);
+    
+    // Проверка на случай пустого массива
+    if (isnan(maximum)) {
+        cout << "Массив пуст!" << endl;
+    } else {
+        cout << "Максимальный элемент в массиве: " << maximum << endl;
+    }
+    
+    return 0;
+}
