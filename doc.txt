@@ -4,19 +4,19 @@
 
 using namespace std;
 
-// Функция для нахождения максимума в массиве
-double find_max(const vector<double>& numbers) {
+// Функция для нахождения минимума в массиве (изменено с максимума)
+double find_min(const vector<double>& numbers) {
     if (numbers.empty()) {
-        return numeric_limits<double>::quiet_NaN(); // Возвращаем NaN для пустого массива
+        return numeric_limits<double>::quiet_NaN();
     }
     
-    double max_num = numbers[0];
+    double min_num = numbers[0];
     for (double num : numbers) {
-        if (num > max_num) {
-            max_num = num;
+        if (num < min_num) {  // Изменено: > на <
+            min_num = num;
         }
     }
-    return max_num;
+    return min_num;
 }
 
 int main() {
@@ -31,20 +31,17 @@ int main() {
     
     vector<double> numbers(n);
     
-    // Ввод элементов массива
     for (int i = 0; i < n; ++i) {
         cout << "Введите элемент " << i + 1 << ": ";
         cin >> numbers[i];
     }
     
-    // Использование функции find_max
-    double maximum = find_max(numbers);
+    double minimum = find_min(numbers);  // Изменено имя переменной
     
-    // Проверка на случай пустого массива
-    if (isnan(maximum)) {
+    if (isnan(minimum)) {
         cout << "Массив пуст!" << endl;
     } else {
-        cout << "Максимальный элемент в массиве: " << maximum << endl;
+        cout << "Минимальный элемент в массиве: " << minimum << endl;  // Изменено сообщение
     }
     
     return 0;
