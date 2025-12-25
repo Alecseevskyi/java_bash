@@ -35,3 +35,4 @@ public class LuckyTickets {
         System.out.println("Количество счастливых билетов: " + count);
     }
 }
+
